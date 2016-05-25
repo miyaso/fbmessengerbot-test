@@ -40,6 +40,7 @@ $app->post('/callback', function (Request $request) use ($app) {
 
     if ($text) {
         // 
+        error_log($text);
         $pom_key = getenv('POM_KEY');
         $url = 'http://ws.ponpare.jp/ws/wsp0100/Wst0201Action.do?key='.$pom_key.'&large_area=1&format=json';
         $json = file_get_contents($url);
