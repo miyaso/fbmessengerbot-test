@@ -39,7 +39,25 @@ $app->post('/callback', function (Request $request) use ($app) {
             $text = $m['message']['text'];
 
             if ($text) {
+                // 
+                $pom_key = getenv('POM_KEY');
+                $url = 'http://ws.ponpare.jp/ws/wsp0100/Wst0201Action.do?key='.$pom_key.'&large_area=1&format=json';
+                $json = file_get_contents($url);
+                $json = mb_convert_encoding($json, 'UTF8', 'ASCII,JIS,UTF-8,EUC-JP,SJIS-WIN');
+                $eq_data = json_decode($json,true);
+                // 
                 $path = sprintf('me/messages?access_token=%s', getenv('FACEBOOK_PAGE_ACCESS_TOKEN'));
+                foreach ($eq_data["ticket"] as $ticket) {
+                    $json = [
+                        'recipient' => [
+                            'id' => $from, 
+                        ],
+                        'message' => [
+                            'text' => sprintf('商品名:%s', $ticket["name"]), 
+                        ],
+                    ];
+                    $client->request('POST', $path, ['json' => $json]);
+                }
                 $json = [
                     'recipient' => [
                         'id' => $from, 

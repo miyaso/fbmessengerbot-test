@@ -9,5 +9,8 @@
     "FACEBOOK_PAGE_VERIFY_TOKEN": {
       "description": "Facebook Page Verify Token"
     }
+    "POM_KEY": {
+      "description": "pom key"
+    }
   }
 }
