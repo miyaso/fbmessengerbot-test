@@ -11,7 +11,7 @@ silex を使っています.
 * Heroku アカウントを取得してください.
 * 下の Deploy ボタンを押してデプロイします. 環境変数に適当な文字列を入れておきます(後で編集したり使ったりします).
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](http://bit.ly/fbmessengerbot-test-deploy)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
 * https://developers.facebook.com/docs/messenger-platform/quickstart を参考に、以下の手順を進めてください.
     * Facebook App に Messenger を利用する設定を追加し、Facebook Page の Access Token を取得 -> Heroku にデプロイしたアプリケーションの環境変数 FACEBOOK_PAGE_ACCESS_TOKEN に設定します.
