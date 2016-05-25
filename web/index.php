@@ -47,7 +47,7 @@ $app->post('/callback', function (Request $request) use ($app) {
                 $eq_data = json_decode($json,true);
                 // 
                 $path = sprintf('me/messages?access_token=%s', getenv('FACEBOOK_PAGE_ACCESS_TOKEN'));
-                for ($i = 0; $i < 3; $i++) {
+                /*for ($i = 0; $i < 3; $i++) {
                     $c_json = [
                         'recipient' => [
                             'id' => $from, 
@@ -57,7 +57,7 @@ $app->post('/callback', function (Request $request) use ($app) {
                         ],
                     ];
                     $client->request('POST', $path, ['json' => $c_json]);
-                }
+                }*/
                 $json = [
                     'recipient' => [
                         'id' => $from, 
