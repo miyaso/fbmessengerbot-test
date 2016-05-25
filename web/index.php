@@ -30,10 +30,10 @@ $app->post('/callback', function (Request $request) use ($app) {
     $body = json_decode($request->getContent(), true);
     $client = new Client(['base_uri' => 'https://graph.facebook.com/v2.6/']);
 
-    $obj = $body['entry'] 
+    $obj = $body['entry'];
     $app['monolog']->addInfo(sprintf('obj: %s', json_encode($obj)));
 
-    $m = $obj['messaging']
+    $m = $obj['messaging'];
     $app['monolog']->addInfo(sprintf('messaging: %s', json_encode($m)));
     $from = $m['sender']['id'];
     $text = $m['message']['text'];
