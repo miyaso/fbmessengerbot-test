@@ -77,6 +77,7 @@ $app->post('/callback', function (Request $request) use ($app) {
             ],
         ];
         $client->request('POST', $path, ['json' => $json]);
+        sleep(5)
     }
 
 
