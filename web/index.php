@@ -47,16 +47,16 @@ $app->post('/callback', function (Request $request) use ($app) {
                 $eq_data = json_decode($json,true);
                 // 
                 $path = sprintf('me/messages?access_token=%s', getenv('FACEBOOK_PAGE_ACCESS_TOKEN'));
-                foreach ($eq_data["ticket"] as $ticket) {
-                    $json = [
+                for ($i = 0; $i < 3; $i++) {
+                    $c_json = [
                         'recipient' => [
                             'id' => $from, 
                         ],
                         'message' => [
-                            'text' => sprintf('商品名:%s', $ticket["name"]), 
+                            'text' => sprintf('商品名:%s', $eq_data["ticket"][$i]["name"]), 
                         ],
                     ];
-                    $client->request('POST', $path, ['json' => $json]);
+                    $client->request('POST', $path, ['json' => $c_json]);
                 }
                 $json = [
                     'recipient' => [
