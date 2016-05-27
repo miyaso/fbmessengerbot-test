@@ -64,12 +64,12 @@ $app->post('/callback', function (Request $request) use ($app) {
                         'message' => [
                             'text' => sprintf('商品名:%s', $eq_data["ticket"][$i]["name"]), 
                         ],
-                        'sticker_id': 369239263222822,
-                        'attachments':[
-                            'type':'image',
-                            'payload':{
-                                'url':'https://fbcdn-dragon-a.akamaihd.net/hphotos-ak-xfa1/t39.1997-6/851557_369239266556155_759568595_n.png',
-                            }
+                        'sticker_id'=> 369239263222822,
+                        'attachments'=>[
+                            'type'=>'image',
+                            'payload'=>[
+                                'url'=>'https://fbcdn-dragon-a.akamaihd.net/hphotos-ak-xfa1/t39.1997-6/851557_369239266556155_759568595_n.png',
+                            ],
                         ],
                     ];
                     $client->request('POST', $path, ['json' => $c_json]);
