@@ -50,11 +50,11 @@ $app->post('/callback', function (Request $request) use ($app) {
                 ];
                 $client->request('POST', $path, ['json' => $json]);
                 // 
-                $pom_key = getenv('POM_KEY');
-                $url = 'http://ws.ponpare.jp/ws/wsp0100/Wst0101Action.do?key='.$pom_key.'&large_area=1&format=json';
-                $json = file_get_contents($url);
-                $json = mb_convert_encoding($json, 'UTF8', 'ASCII,JIS,UTF-8,EUC-JP,SJIS-WIN');
-                $eq_data = json_decode($json,true);
+                #$pom_key = getenv('POM_KEY');
+                #$url = 'http://ws.ponpare.jp/ws/wsp0100/Wst0101Action.do?key='.$pom_key.'&large_area=1&format=json';
+                #$json = file_get_contents($url);
+                #$json = mb_convert_encoding($json, 'UTF8', 'ASCII,JIS,UTF-8,EUC-JP,SJIS-WIN');
+                #$eq_data = json_decode($json,true);
                 // 
                 for ($i = 0; $i < 10; $i++) {
                     $c_json = [
@@ -63,6 +63,13 @@ $app->post('/callback', function (Request $request) use ($app) {
                         ],
                         'message' => [
                             'text' => sprintf('商品名:%s', $eq_data["ticket"][$i]["name"]), 
+                        ],
+                        'sticker_id': 369239263222822,
+                        'attachments':[
+                            'type':'image',
+                            'payload':{
+                                'url':'https://fbcdn-dragon-a.akamaihd.net/hphotos-ak-xfa1/t39.1997-6/851557_369239266556155_759568595_n.png',
+                            }
                         ],
                     ];
                     $client->request('POST', $path, ['json' => $c_json]);
