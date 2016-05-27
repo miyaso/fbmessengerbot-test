@@ -54,7 +54,6 @@ $app->post('/callback', function (Request $request) use ($app) {
                 $url = 'http://ws.ponpare.jp/ws/wsp0100/Wst0101Action.do?key='.$pom_key.'&large_area=1&format=json';
                 $json = file_get_contents($url);
                 $json = mb_convert_encoding($json, 'UTF8', 'ASCII,JIS,UTF-8,EUC-JP,SJIS-WIN');
-                sleep(5);
                 $eq_data = json_decode($json,true);
                 // 
                 for ($i = 0; $i < 10; $i++) {
